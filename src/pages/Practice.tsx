@@ -14,6 +14,7 @@ export default function Practice() {
   const [userAnswers, setUserAnswers] = useState<Record<number, string>>({});
   const [results, setResults] = useState<Record<number, boolean | null>>({});
   const [hidden, setHidden] = useState<Set<number>>(new Set());
+  const [correctIds, setCorrectIds] = useState<Set<number>>(new Set());
   const [shuffleOrder, setShuffleOrder] = useState<number[]>([]);
 
   const groups = useLiveQuery(() => db.groups.toArray());
@@ -84,8 +85,10 @@ export default function Practice() {
       : cards;
 
   // Stage 1: state === 0, Stage 2: state <= 1, Stage 3: all
+  // Keep cards that were just answered correctly visible until hidden by timeout
   const stageCards = applyOrder(
     flashcards?.filter((c) => {
+      if (correctIds.has(c.id)) return true;
       const s = getState(c.id);
       if (stage === 1) return s === 0;
       if (stage === 2) return s <= 1;
@@ -102,6 +105,7 @@ export default function Practice() {
     setUserAnswers({});
     setResults({});
     setHidden(new Set());
+    setCorrectIds(new Set());
     setFlipped(null);
   };
 
@@ -148,18 +152,23 @@ export default function Practice() {
     }
   };
 
+  const normalize = (text: string) => text.trim().toLowerCase().replace(/[^\w\s]|_/g, '').replace(/\s+/g, ' ');
+
   const handleAnswer = async (cardId: number) => {
-    const correct = (userAnswers[cardId] ?? '').trim().toLowerCase() ===
-      flashcards?.find((c) => c.id === cardId)?.answer.trim().toLowerCase();
+    const correct = normalize(userAnswers[cardId] ?? '') ===
+      normalize(flashcards?.find((c) => c.id === cardId)?.answer ?? '');
     setResults((prev) => ({ ...prev, [cardId]: correct }));
 
     if (correct) {
-      // Increment state in DB
+      setCorrectIds((prev) => new Set(prev).add(cardId));
       const gi = groupItems?.find((g) => g.flashcardId === cardId);
       if (gi) {
         await db.groupItems.update(gi.id, { state: (gi.state ?? 0) + 1 });
       }
-      setTimeout(() => setHidden((prev) => new Set(prev).add(cardId)), 1000);
+      setTimeout(() => {
+        setHidden((prev) => new Set(prev).add(cardId));
+        setCorrectIds((prev) => { const s = new Set(prev); s.delete(cardId); return s; });
+      }, 1000);
     }
   };
 
