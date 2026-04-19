@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+# datfc — Flashcard Learning App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, offline-first flashcard app to help you memorize anything — vocabulary, technical terms, daily phrases, or whatever you need to learn.
 
-Currently, two official plugins are available:
+## What is it?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+datfc is a personal learning tool that lives entirely in your browser. No accounts, no servers, no internet required. Your data stays on your device.
 
-## React Compiler
+## What can you do?
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Create flashcards** with a question and answer, search them instantly with fuzzy matching
+- **Organize into groups** — put related cards together (e.g. "Daily Standup English", "AWS Services", "Japanese N5")
+- **Practice by group** with a 3-stage learning system:
+  - Round 1: New cards you haven't mastered yet
+  - Round 2: Cards you've only gotten right once
+  - Round 3: All cards for a final review
+  - Cards you answer correctly move up; cards you skip or get wrong reset back to zero
+- **Listen to pronunciation** — tap the 🔊 button to hear any question or answer read aloud (auto-detects Vietnamese and English)
+- **Track your progress** with a dashboard showing your practice streak, daily activity chart, and per-group statistics
+- **Stay motivated** with a Duolingo-style day streak 🔥 and color-coded groups (green = practiced today, yellow = this week, red = overdue)
+- **Import & export** your flashcards as JSON or CSV — from files, URLs, or just paste text directly
 
-## Expanding the ESLint configuration
+## How does the practice system work?
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Each flashcard has a "mastery state" per group. Every time you answer correctly, the state goes up. If you can't answer and move to the next stage, it resets to zero. The 3 stages filter cards by mastery level, so you spend more time on what you don't know yet.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+After completing all 3 stages, it counts as one practice session and loops back — so you can keep going as long as you want.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Open http://localhost:5173 — the app comes pre-loaded with 50 Vietnamese-to-English daily standup phrases to get you started.
