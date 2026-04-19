@@ -252,18 +252,31 @@ export default function Practice() {
                     <span className="text-xs text-gray-400">×{getState(card.id)}</span>
                   </div>
                 </div>
-                <input
-                  className="border rounded px-2 py-1 w-full"
-                  placeholder="Your answer..."
-                  value={userAnswers[card.id] ?? ''}
-                  onChange={(e) => {
-                    setUserAnswers((prev) => ({ ...prev, [card.id]: e.target.value }));
-                    setResults((prev) => ({ ...prev, [card.id]: null }));
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter') handleAnswer(card.id);
-                  }}
-                />
+                <div className="relative">
+                  <input
+                    className="border rounded px-2 py-1 w-full pr-7"
+                    placeholder="Your answer..."
+                    value={userAnswers[card.id] ?? ''}
+                    onChange={(e) => {
+                      setUserAnswers((prev) => ({ ...prev, [card.id]: e.target.value }));
+                      setResults((prev) => ({ ...prev, [card.id]: null }));
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') handleAnswer(card.id);
+                    }}
+                  />
+                  {userAnswers[card.id] && (
+                    <button
+                      className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      onClick={() => {
+                        setUserAnswers((prev) => ({ ...prev, [card.id]: '' }));
+                        setResults((prev) => ({ ...prev, [card.id]: null }));
+                      }}
+                    >
+                      ✕
+                    </button>
+                  )}
+                </div>
                 <div className="flex justify-between items-center">
                   {results[card.id] !== null && results[card.id] !== undefined && (
                     <p className={results[card.id] ? 'text-green-600' : 'text-red-600'}>
