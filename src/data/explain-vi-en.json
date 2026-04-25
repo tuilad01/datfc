@@ -1,0 +1,202 @@
+[
+    {
+        "question": "I’m currently scaffolding the Web API controllers for the user module.",
+        "answer": "Tôi đang khởi tạo cấu trúc (scaffolding) các Web API controller cho module người dùng."
+    },
+    {
+        "question": "I’ve finished implementing the Data Transfer Objects (DTOs) to clean up the response.",
+        "answer": "Tôi đã hoàn thành việc triển khai các DTO để làm sạch dữ liệu phản hồi từ API."
+    },
+    {
+        "question": "I'm working on the Entity Framework migration to update the database schema.",
+        "answer": "Tôi đang thực hiện migration trong Entity Framework để cập nhật cấu trúc cơ sở dữ liệu."
+    },
+    {
+        "question": "I’ve added a new Middleware to handle global exception logging.",
+        "answer": "Tôi đã thêm một Middleware mới để xử lý việc ghi log lỗi tập trung."
+    },
+    {
+        "question": "I'm injecting a new service into the constructor using the built-in DI container.",
+        "answer": "Tôi đang thực hiện inject một service mới vào constructor thông qua bộ DI có sẵn của hệ thống."
+    },
+    {
+        "question": "I found a bottleneck in the LINQ query, so I'm optimizing it with eager loading.",
+        "answer": "Tôi đã tìm thấy điểm nghẽn trong câu lệnh LINQ, vì vậy tôi đang tối ưu hóa nó bằng cách sử dụng eager loading."
+    },
+    {
+        "question": "I’m setting up Fluent Validation for the incoming request models.",
+        "answer": "Tôi đang thiết lập Fluent Validation cho các request model đầu vào."
+    },
+    {
+        "question": "I've updated the appsettings.json to include the new connection strings.",
+        "answer": "Tôi đã cập nhật file appsettings.json để thêm các chuỗi kết nối (connection strings) mới."
+    },
+    {
+        "question": "I'm debugging a null reference exception in the business logic layer.",
+        "answer": "Tôi đang fix lỗi null reference trong tầng xử lý nghiệp vụ (business logic layer)."
+    },
+    {
+        "question": "I’ve implemented Asynchronous programming (async/await) to improve throughput.",
+        "answer": "Tôi đã triển khai lập trình bất đồng bộ (async/await) để cải thiện hiệu suất xử lý."
+    },
+    {
+        "question": "I’m working on a Custom Action Filter for role-based authorization.",
+        "answer": "Tôi đang viết một Custom Action Filter để phân quyền dựa trên vai trò người dùng."
+    },
+    {
+        "question": "I’ve integrated Swagger to help the frontend team test the endpoints.",
+        "answer": "Tôi đã tích hợp Swagger để hỗ trợ team frontend kiểm thử các endpoint."
+    },
+    {
+        "question": "I’m currently refactoring the Repository pattern to make it more testable.",
+        "answer": "Tôi đang cấu trúc lại (refactor) Repository pattern để dễ dàng viết unit test hơn."
+    },
+    {
+        "question": "I’m troubleshooting a 401 Unauthorized error on the authentication endpoint.",
+        "answer": "Tôi đang tìm nguyên nhân lỗi 401 Unauthorized ở endpoint xác thực."
+    },
+    {
+        "question": "I’ve finished the Unit Tests using xUnit and Moq for the service layer.",
+        "answer": "Tôi đã hoàn thành việc viết Unit Test bằng xUnit và Moq cho tầng service."
+    },
+    {
+        "question": "I’m building a reusable component for the data tables.",
+        "answer": "Tôi đang xây dựng một component có thể tái sử dụng cho các bảng dữ liệu."
+    },
+    {
+        "question": "I’ve set up the Reactive Forms with custom validation logic.",
+        "answer": "Tôi đã thiết lập Reactive Forms với các logic kiểm tra dữ liệu (validation) tùy chỉnh."
+    },
+    {
+        "question": "I’m handling the API subscription using the HttpClient module.",
+        "answer": "Tôi đang xử lý việc đăng ký nhận dữ liệu (subscription) từ API thông qua HttpClient module."
+    },
+    {
+        "question": "I’m using Async Pipes to handle observable data directly in the template.",
+        "answer": "Tôi đang sử dụng Async Pipes để xử lý dữ liệu observable trực tiếp trên template."
+    },
+    {
+        "question": "I’ve implemented Lazy Loading for the admin module to reduce initial bundle size.",
+        "answer": "Tôi đã triển khai Lazy Loading cho module admin để giảm kích thước file bundle ban đầu."
+    },
+    {
+        "question": "I’m currently debugging the Input/Output decorators for parent-child communication.",
+        "answer": "Tôi đang debug các decorator Input/Output để truyền dữ liệu giữa component cha và con."
+    },
+    {
+        "question": "I’ve added an Auth Guard to protect the internal dashboard routes.",
+        "answer": "Tôi đã thêm Auth Guard để bảo vệ các route của dashboard nội bộ."
+    },
+    {
+        "question": "I’m managing the global state using NgRx (or signals) for the shopping cart.",
+        "answer": "Tôi đang quản lý trạng thái toàn cục (global state) bằng NgRx (hoặc signals) cho giỏ hàng."
+    },
+    {
+        "question": "I’ve styled the component using SCSS variables to match the design system.",
+        "answer": "Tôi đã viết style cho component bằng các biến SCSS để khớp với hệ thống thiết kế."
+    },
+    {
+        "question": "I’m working on a Custom Pipe to format currency across the app.",
+        "answer": "Tôi đang viết một Custom Pipe để định dạng tiền tệ cho toàn bộ ứng dụng."
+    },
+    {
+        "question": "I’m troubleshooting a Change Detection issue where the UI isn't updating.",
+        "answer": "Tôi đang xử lý vấn đề về Change Detection khiến giao diện không cập nhật dữ liệu."
+    },
+    {
+        "question": "I’ve integrated an HTTP Interceptor to attach JWT tokens to every request.",
+        "answer": "Tôi đã tích hợp HTTP Interceptor để đính kèm token JWT vào mọi request."
+    },
+    {
+        "question": "I’m migrating a few components to use Angular Signals for better performance.",
+        "answer": "Tôi đang chuyển đổi một số component sang dùng Angular Signals để có hiệu suất tốt hơn."
+    },
+    {
+        "question": "I’ve optimized the DOM rendering using the trackBy function in the *ngFor loop.",
+        "answer": "Tôi đã tối ưu hóa việc render DOM bằng cách dùng hàm trackBy trong vòng lặp *ngFor."
+    },
+    {
+        "question": "I’m currently mocking the backend service so I can continue UI development.",
+        "answer": "Tôi đang giả lập (mock) backend service để có thể tiếp tục phát triển giao diện."
+    },
+    {
+        "question": "I’m resolving a CORS policy issue between the Angular dev server and the .NET API.",
+        "answer": "Tôi đang giải quyết lỗi chính sách CORS giữa server dev Angular và API .NET."
+    },
+    {
+        "question": "I’m mapping the JSON response from the API to our frontend TypeScript interfaces.",
+        "answer": "Tôi đang map dữ liệu JSON trả về từ API sang các interface TypeScript ở frontend."
+    },
+    {
+        "question": "I’ve verified that the model binding matches between the C# class and the Angular form.",
+        "answer": "Tôi đã kiểm tra việc liên kết dữ liệu (model binding) khớp giữa class C# và form Angular."
+    },
+    {
+        "question": "I’m testing the end-to-end flow from the UI submit button to the database record.",
+        "answer": "Tôi đang kiểm thử luồng từ đầu đến cuối (E2E) từ lúc nhấn nút submit trên giao diện cho đến khi lưu vào database."
+    },
+    {
+        "question": "I'm updating the environment files to point to the new staging API.",
+        "answer": "Tôi đang cập nhật các file môi trường (environment files) để trỏ đến API của môi trường staging mới."
+    },
+    {
+        "question": "I’m blocked by the DevOps team; I need the new environment variables set up.",
+        "answer": "Tôi đang bị kẹt do bên DevOps; tôi cần họ thiết lập các biến môi trường mới."
+    },
+    {
+        "question": "I’ve hit a merge conflict in the .csproj file that I need to resolve.",
+        "answer": "Tôi bị xung đột code (merge conflict) trong file .csproj và cần phải xử lý."
+    },
+    {
+        "question": "I’m seeing a schema mismatch between the API and the SQL database.",
+        "answer": "Tôi thấy có sự không đồng nhất về cấu trúc (schema) giữa API và cơ sở dữ liệu SQL."
+    },
+    {
+        "question": "The third-party NuGet package I’m using is throwing a compatibility error.",
+        "answer": "Package NuGet của bên thứ ba mà tôi đang dùng đang báo lỗi không tương thích."
+    },
+    {
+        "question": "I’m struggling with a circular dependency in the Angular services.",
+        "answer": "Tôi đang gặp khó khăn với lỗi phụ thuộc vòng (circular dependency) trong các Angular service."
+    },
+    {
+        "question": "Yesterday, I merged the PR for the login functionality.",
+        "answer": "Hôm qua tôi đã merge PR cho chức năng đăng nhập."
+    },
+    {
+        "question": "Today, I’ll be peer-reviewing Sarah's code for the dashboard.",
+        "answer": "Hôm nay tôi sẽ review code cho Sarah phần dashboard."
+    },
+    {
+        "question": "I’ve finished the CRUD operations for the employee module.",
+        "answer": "Tôi đã hoàn thành các thao tác CRUD cho module nhân viên."
+    },
+    {
+        "question": "I’m planning to push my changes to the feature branch by EOD (End of Day).",
+        "answer": "Tôi dự định sẽ push các thay đổi của mình lên feature branch vào cuối ngày hôm nay."
+    },
+    {
+        "question": "I’ve addressed the feedback from the last code review.",
+        "answer": "Tôi đã xử lý các phản hồi từ lần review code trước."
+    },
+    {
+        "question": "I’m going to sync with the UX designer to clarify the mobile layout.",
+        "answer": "Tôi sẽ trao đổi với designer UX để làm rõ bố cục trên giao diện mobile."
+    },
+    {
+        "question": "Everything is on track for the sprint demo on Friday.",
+        "answer": "Mọi thứ đang đi đúng tiến độ cho buổi demo sprint vào thứ Sáu."
+    },
+    {
+        "question": "I’ll be out of pocket for two hours this afternoon for a doctor's appointment.",
+        "answer": "Chiều nay tôi sẽ vắng mặt khoảng 2 tiếng vì có hẹn với bác sĩ."
+    },
+    {
+        "question": "I’m doing some hotfixing for a bug found in the UAT environment.",
+        "answer": "Tôi đang thực hiện hotfix cho một lỗi vừa tìm thấy trên môi trường UAT."
+    },
+    {
+        "question": "That's it for me; I'm moving my ticket to 'In Testing' now.",
+        "answer": "Phần của tôi đến đây là hết; tôi đang chuyển ticket của mình sang trạng thái 'Đang kiểm thử'."
+    }
+]

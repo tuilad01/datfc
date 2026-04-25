@@ -1,0 +1,202 @@
+[
+    {
+        "question": "Good morning, everyone. Let’s get started.",
+        "answer": "Chào buổi sáng mọi người. Chúng ta bắt đầu nhé."
+    },
+    {
+        "question": "Hi team, hope you’re all having a good week so far.",
+        "answer": "Chào cả team, hy vọng mọi người có một tuần làm việc tốt lành cho đến nay."
+    },
+    {
+        "question": "Is everyone here, or are we still waiting for a few people?",
+        "answer": "Mọi người đã có mặt đông đủ chưa, hay chúng ta còn đợi thêm vài người nữa?"
+    },
+    {
+        "question": "Let’s kick things off with the usual updates.",
+        "answer": "Hãy bắt đầu bằng các cập nhật như thường lệ nhé."
+    },
+    {
+        "question": "Happy Monday! I hope everyone had a relaxing weekend.",
+        "answer": "Chúc mừng thứ Hai! Hy vọng mọi người đã có một cuối tuần thư giãn."
+    },
+    {
+        "question": "Can everyone hear me okay? Just checking my audio.",
+        "answer": "Mọi người có nghe rõ tôi nói không? Tôi chỉ đang kiểm tra âm thanh."
+    },
+    {
+        "question": "I’ll start the screen share now. Can you see it?",
+        "answer": "Tôi sẽ bắt đầu chia sẻ màn hình bây giờ. Các bạn có thấy không?"
+    },
+    {
+        "question": "Great to see everyone. Let's keep this one brief.",
+        "answer": "Rất vui được gặp mọi người. Hãy giữ buổi họp này thật ngắn gọn nhé."
+    },
+    {
+        "question": "Who would like to go first today?",
+        "answer": "Ai muốn là người báo cáo đầu tiên hôm nay?"
+    },
+    {
+        "question": "I'll go ahead and start, then pass it over to the next person.",
+        "answer": "Tôi sẽ bắt đầu trước, sau đó sẽ chuyển cho người tiếp theo."
+    },
+    {
+        "question": "Could you clarify what you meant by that?",
+        "answer": "Bạn có thể làm rõ ý bạn vừa nói là gì không?"
+    },
+    {
+        "question": "What’s the priority on that specific task?",
+        "answer": "Mức độ ưu tiên của task cụ thể đó là gì?"
+    },
+    {
+        "question": "Is there any documentation available for this feature?",
+        "answer": "Có tài liệu nào cho tính năng này không?"
+    },
+    {
+        "question": "Do we have a deadline for this particular bug fix?",
+        "answer": "Chúng ta có thời hạn cho việc fix bug cụ thể này không?"
+    },
+    {
+        "question": "Who should I reach out to for help with this?",
+        "answer": "Tôi nên liên hệ với ai để được giúp đỡ về việc này?"
+    },
+    {
+        "question": "Could you repeat that? I think my connection lagged for a second.",
+        "answer": "Bạn có thể nhắc lại không? Tôi nghĩ kết nối của tôi vừa bị lag một chút."
+    },
+    {
+        "question": "Are there any specific requirements I should be aware of?",
+        "answer": "Có yêu cầu cụ thể nào mà tôi nên lưu ý không?"
+    },
+    {
+        "question": "Do we need a separate meeting to dive deeper into this?",
+        "answer": "Chúng ta có cần một buổi họp riêng để thảo luận sâu hơn về vấn đề này không?"
+    },
+    {
+        "question": "What are the next steps for this ticket?",
+        "answer": "Các bước tiếp theo cho ticket này là gì?"
+    },
+    {
+        "question": "Does anyone have any concerns about this approach?",
+        "answer": "Có ai có lo ngại gì về cách tiếp cận này không?"
+    },
+    {
+        "question": "Is this related to the work we did last sprint?",
+        "answer": "Việc này có liên quan đến phần chúng ta đã làm ở sprint trước không?"
+    },
+    {
+        "question": "Can you provide a bit more context on that issue?",
+        "answer": "Bạn có thể cung cấp thêm một chút ngữ cảnh về vấn đề đó được không?"
+    },
+    {
+        "question": "Are we waiting on any external dependencies?",
+        "answer": "Chúng ta có đang đợi sự phụ thuộc bên ngoài nào không?"
+    },
+    {
+        "question": "Is there a specific branch I should be working on?",
+        "answer": "Có branch cụ thể nào tôi nên làm việc trên đó không?"
+    },
+    {
+        "question": "Would it be helpful if I shared my screen to show the issue?",
+        "answer": "Liệu có ích không nếu tôi chia sẻ màn hình để chỉ ra vấn đề?"
+    },
+    {
+        "question": "I have some extra time today; do you need a hand with that?",
+        "answer": "Hôm nay tôi có thêm thời gian; bạn có cần giúp một tay với việc đó không?"
+    },
+    {
+        "question": "I’ve worked on something similar before; feel free to ping me.",
+        "answer": "Tôi đã từng làm cái gì đó tương tự trước đây; cứ thoải mái nhắn cho tôi nhé."
+    },
+    {
+        "question": "Let’s sync up after this meeting to troubleshoot that.",
+        "answer": "Hãy kết nối sau buổi họp này để cùng giải quyết vấn đề đó."
+    },
+    {
+        "question": "I can take a look at your Pull Request (PR) right after this.",
+        "answer": "Tôi có thể xem qua Pull Request của bạn ngay sau buổi này."
+    },
+    {
+        "question": "I’m happy to pair-program with you if you’re stuck.",
+        "answer": "Tôi rất sẵn lòng pair-program với bạn nếu bạn đang bị kẹt."
+    },
+    {
+        "question": "I’ll drop a link to that resource in the chat.",
+        "answer": "Tôi sẽ gửi link tài liệu đó vào phần chat."
+    },
+    {
+        "question": "If you’re blocked, just let me know and I’ll jump in.",
+        "answer": "Nếu bạn bị kẹt, cứ báo tôi và tôi sẽ vào hỗ trợ."
+    },
+    {
+        "question": "I can take over that task if you're feeling overloaded.",
+        "answer": "Tôi có thể đảm nhận task đó nếu bạn thấy đang bị quá tải."
+    },
+    {
+        "question": "Let's discuss this further in the Slack channel.",
+        "answer": "Hãy thảo luận thêm về việc này trong kênh Slack."
+    },
+    {
+        "question": "I’ll follow up with the product owner to get an answer for you.",
+        "answer": "Tôi sẽ làm việc tiếp với product owner để lấy câu trả lời cho bạn."
+    },
+    {
+        "question": "Sorry to interrupt, but I have a quick question about that.",
+        "answer": "Xin lỗi vì đã ngắt lời, nhưng tôi có một câu hỏi nhanh về phần đó."
+    },
+    {
+        "question": "Just to add to what you were saying...",
+        "answer": "Chỉ để bổ sung thêm vào những gì bạn vừa nói..."
+    },
+    {
+        "question": "Can we circle back to that point later?",
+        "answer": "Chúng ta có thể quay lại điểm đó sau được không?"
+    },
+    {
+        "question": "In the interest of time, let’s take this conversation offline.",
+        "answer": "Để tiết kiệm thời gian, chúng ta hãy thảo luận riêng việc này sau nhé."
+    },
+    {
+        "question": "I think we’re getting a bit into the weeds here; let's stay high-level.",
+        "answer": "Tôi nghĩ chúng ta đang đi hơi quá chi tiết rồi; hãy giữ ở mức tổng quan thôi."
+    },
+    {
+        "question": "Wait, I just want to make sure I understand the goal here.",
+        "answer": "Đợi đã, tôi chỉ muốn chắc chắn rằng mình hiểu rõ mục tiêu ở đây."
+    },
+    {
+        "question": "Before we move on, I have one more update.",
+        "answer": "Trước khi chuyển sang phần tiếp theo, tôi có thêm một cập nhật nữa."
+    },
+    {
+        "question": "That’s all from my side. Thanks, everyone.",
+        "answer": "Đó là tất cả phần của tôi. Cảm ơn mọi người."
+    },
+    {
+        "question": "If there’s nothing else, I’ll give you all 5 minutes back.",
+        "answer": "Nếu không còn gì khác, tôi sẽ kết thúc sớm để mọi người có thêm 5 phút nghỉ ngơi."
+    },
+    {
+        "question": "Thanks for the updates. Have a productive day!",
+        "answer": "Cảm ơn vì các cập nhật. Chúc mọi người một ngày làm việc hiệu quả!"
+    },
+    {
+        "question": "I'll catch you all later. Bye!",
+        "answer": "Gặp lại mọi người sau nhé. Chào tạm biệt!"
+    },
+    {
+        "question": "Great meeting, talk to you all tomorrow.",
+        "answer": "Buổi họp rất tốt, nói chuyện với mọi người vào ngày mai nhé."
+    },
+    {
+        "question": "I'm heading back to the code now. See you on Slack!",
+        "answer": "Giờ tôi quay lại viết code đây. Hẹn gặp trên Slack!"
+    },
+    {
+        "question": "Good luck with the deployment today, everyone.",
+        "answer": "Chúc mọi người may mắn với đợt deployment hôm nay."
+    },
+    {
+        "question": "Thanks for the feedback. Talk soon!",
+        "answer": "Cảm ơn vì những phản hồi. Nói chuyện sau nhé!"
+    }
+]

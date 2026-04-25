@@ -10,6 +10,12 @@ export default function FlashcardGroups() {
   const [description, setDescription] = useState('');
   const [selectedGroupId, setSelectedGroupId] = useState<number | null>(null);
   const [filter, setFilter] = useState<'all' | 'ungrouped' | number>('all');
+  const [splitSize, setSplitSize] = useState('');
+  const [mergeIds, setMergeIds] = useState<Set<number>>(new Set());
+  const [mergeName, setMergeName] = useState('');
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editName, setEditName] = useState('');
+  const [editDesc, setEditDesc] = useState('');
 
   const groups = useLiveQuery(() => db.groups.toArray());
   const flashcards = useLiveQuery(() => db.flashcards.toArray());
@@ -31,6 +37,18 @@ export default function FlashcardGroups() {
   });
 
   const assignedIds = new Set(groupItems?.map((gi) => gi.flashcardId));
+
+  const startEdit = (group: FlashcardGroup) => {
+    setEditingId(group.id);
+    setEditName(group.name);
+    setEditDesc(group.description);
+  };
+
+  const saveEdit = async () => {
+    if (!editingId || !editName.trim()) return;
+    await db.groups.update(editingId, { name: editName, description: editDesc });
+    setEditingId(null);
+  };
 
   const addGroup = async () => {
     if (!name.trim()) return;
@@ -68,6 +86,59 @@ export default function FlashcardGroups() {
     }
   };
 
+  const splitGroup = async (groupId: number) => {
+    const size = parseInt(splitSize);
+    if (!size || size <= 0) return;
+    const group = groups?.find((g) => g.id === groupId);
+    if (!group) return;
+    const items = allGroupItems?.filter((gi) => gi.groupId === groupId) ?? [];
+    if (items.length <= size) return;
+    const chunks: number[][] = [];
+    for (let i = 0; i < items.length; i += size) {
+      chunks.push(items.slice(i, i + size).map((gi) => gi.flashcardId));
+    }
+    // Delete original group and its items
+    await db.groupItems.where('groupId').equals(groupId).delete();
+    await db.groups.delete(groupId);
+    // Create new groups
+    for (let i = 0; i < chunks.length; i++) {
+      const newId = await db.groups.add({ name: `${group.name} (${i + 1})`, description: group.description } as FlashcardGroup);
+      await db.groupItems.bulkAdd(chunks[i].map((fid) => ({ groupId: newId, flashcardId: fid, state: 0 }) as any));
+    }
+    setSplitSize('');
+    if (selectedGroupId === groupId) setSelectedGroupId(null);
+  };
+
+  const toggleMerge = (id: number) => {
+    setMergeIds((prev) => {
+      const s = new Set(prev);
+      s.has(id) ? s.delete(id) : s.add(id);
+      return s;
+    });
+  };
+
+  const mergeGroups = async () => {
+    if (mergeIds.size < 2 || !mergeName.trim()) return;
+    const ids = Array.from(mergeIds);
+    // Read fresh from DB to avoid stale data
+    const flashcardIds = new Set<number>();
+    for (const gid of ids) {
+      const items = await db.groupItems.where('groupId').equals(gid).toArray();
+      items.forEach((gi) => flashcardIds.add(gi.flashcardId));
+    }
+    // Delete old groups and items
+    for (const gid of ids) {
+      await db.groupItems.where('groupId').equals(gid).delete();
+      await db.groups.delete(gid);
+    }
+    // Create merged group
+    const newId = await db.groups.add({ name: mergeName, description: '' } as FlashcardGroup);
+    await db.groupItems.bulkAdd(Array.from(flashcardIds).map((fid) => ({ groupId: newId, flashcardId: fid, state: 0 }) as any));
+    setMergeIds(new Set());
+    setMergeName('');
+    setSelectedGroupId(newId as number);
+  };
+
   return (
     <div className="w-full max-w-md sm:max-w-xl lg:max-w-3xl mx-auto mt-8 px-4 space-y-6">
       <div className="flex justify-between items-center">
@@ -102,20 +173,102 @@ export default function FlashcardGroups() {
             className={`border rounded p-3 cursor-pointer flex justify-between items-center ${selectedGroupId === group.id ? 'border-blue-500 bg-blue-50' : ''}`}
             onClick={() => setSelectedGroupId(selectedGroupId === group.id ? null : group.id)}
           >
-            <div>
-              <span className="font-medium">{group.name}</span>
-              <span className="ml-2 text-xs bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full">{cardCount(group.id)}</span>
-              {group.description && <span className="text-gray-500 text-sm ml-2">— {group.description}</span>}
-            </div>
-            <button
-              className="text-red-500 text-sm ml-2"
-              onClick={(e) => { e.stopPropagation(); deleteGroup(group.id); }}
-            >
-              ✕
-            </button>
+            {editingId === group.id ? (
+              <div className="flex flex-col sm:flex-row gap-2 flex-1 mr-2" onClick={(e) => e.stopPropagation()}>
+                <input
+                  className="border rounded px-2 py-1 flex-1"
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  placeholder="Group name"
+                />
+                <input
+                  className="border rounded px-2 py-1 flex-1"
+                  value={editDesc}
+                  onChange={(e) => setEditDesc(e.target.value)}
+                  placeholder="Description"
+                />
+                <button className="bg-green-600 text-white px-2 py-1 rounded text-sm" onClick={saveEdit}>Save</button>
+                <button className="text-gray-500 text-sm" onClick={() => setEditingId(null)}>Cancel</button>
+              </div>
+            ) : (
+              <div>
+                <span className="font-medium">{group.name}</span>
+                <span className="ml-2 text-xs bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full">{cardCount(group.id)}</span>
+                {group.description && <span className="text-gray-500 text-sm ml-2">— {group.description}</span>}
+              </div>
+            )}
+            {editingId !== group.id && (
+              <div className="flex items-center gap-2">
+                <button
+                  className="text-gray-400 text-sm"
+                  onClick={(e) => { e.stopPropagation(); startEdit(group); }}
+                >
+                  ✏
+                </button>
+                <button
+                  className="text-red-500 text-sm"
+                  onClick={(e) => { e.stopPropagation(); deleteGroup(group.id); }}
+                >
+                  ✕
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </div>
+
+      {/* Split group */}
+      {selectedGroupId && cardCount(selectedGroupId) > 1 && (
+        <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center">
+          <span className="text-sm">Split "{groups?.find((g) => g.id === selectedGroupId)?.name}" into groups of:</span>
+          <input
+            className="border rounded px-2 py-1 w-20"
+            type="number"
+            min="1"
+            placeholder="10"
+            value={splitSize}
+            onChange={(e) => setSplitSize(e.target.value)}
+          />
+          <button
+            className="bg-orange-500 text-white px-3 py-1 rounded text-sm"
+            onClick={() => splitGroup(selectedGroupId)}
+          >
+            ✂ Split
+          </button>
+        </div>
+      )}
+
+      {/* Merge groups */}
+      {groups && groups.length >= 2 && (
+        <section className="space-y-2">
+          <h2 className="text-lg font-semibold">Merge Groups</h2>
+          <div className="flex flex-wrap gap-2">
+            {groups.map((g) => (
+              <button
+                key={g.id}
+                className={`px-2 py-1 rounded border text-xs ${mergeIds.has(g.id) ? 'bg-purple-500 text-white border-purple-500' : 'border-gray-300'}`}
+                onClick={() => toggleMerge(g.id)}
+              >
+                {g.name}
+                <span className="ml-1 text-xs opacity-70">{cardCount(g.id)}</span>
+              </button>
+            ))}
+          </div>
+          {mergeIds.size >= 2 && (
+            <div className="flex gap-2">
+              <input
+                className="border rounded px-2 py-1 flex-1"
+                placeholder="New group name"
+                value={mergeName}
+                onChange={(e) => setMergeName(e.target.value)}
+              />
+              <button className="bg-purple-600 text-white px-3 py-1 rounded text-sm" onClick={mergeGroups}>
+                🔗 Merge ({mergeIds.size})
+              </button>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* Assign flashcards */}
       {selectedGroupId && (

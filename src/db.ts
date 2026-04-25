@@ -51,17 +51,24 @@ export type { Item, Flashcard, FlashcardGroup, FlashcardGroupItem, PracticeHisto
 export { db };
 
 import standupData from './data/standup-vi-en.json';
+import nonTechData from './data/non-tech-vi-en.json';
+import explainData from './data/explain-vi-en.json';
 
-export async function seedData() {
-  const existing = await db.groups.where('name').equals('Standup VI-EN').first();
+async function seedGroup(name: string, description: string, data: { question: string; answer: string }[]) {
+  const existing = await db.groups.where('name').equals(name).first();
   if (existing) return;
-
   const ids = await db.flashcards.bulkAdd(
-    standupData.map((c) => ({ question: c.question, answer: c.answer }) as Flashcard),
+    data.map((c) => ({ question: c.question, answer: c.answer }) as Flashcard),
     { allKeys: true }
   );
-  const groupId = await db.groups.add({ name: 'Standup VI-EN', description: 'Daily standup phrases Vietnamese to English' } as FlashcardGroup);
+  const groupId = await db.groups.add({ name, description } as FlashcardGroup);
   await db.groupItems.bulkAdd(
     (ids as number[]).map((flashcardId) => ({ groupId, flashcardId, state: 0 }) as FlashcardGroupItem)
   );
+}
+
+export async function seedData() {
+  await seedGroup('Standup VI-EN', 'Daily standup phrases Vietnamese to English', standupData);
+  await seedGroup('Non-Tech VI-EN', 'Non-technical meeting phrases English to Vietnamese', nonTechData);
+  await seedGroup('Explain VI-EN', 'Technical explanation phrases English to Vietnamese', explainData);
 }
